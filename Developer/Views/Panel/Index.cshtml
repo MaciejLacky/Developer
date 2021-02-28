@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Panel administracyjny";
+}
+
+
+
+<div class="container pt-5  portfolio ">
+
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="card mb-5 ">
+                <div class="card-body">
+                    <h4 class="card-title">Menu administracyjne</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="@Url.Action("Index","LogBuildings")" class="btn btn-primary btn-lg btn-block">Dziennik budowy</a></li>
+                        <li class="list-group-item"><a href="@Url.Action("Index","OrderDetails")" class="btn btn-primary btn-lg btn-block">Zamówienia</a></li>
+                        <li class="list-group-item"><a href="@Url.Action("Index","MessagesFromClients")" class="btn btn-primary btn-lg btn-block">Wiadomości</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 ">
+            <div class="card mb-5">
+                <h4 class="card-title pt-3 pl-2">Wiadomości od klientów</h4>
+                <div class="card-body">
+                    @Html.Action("_MessagesFromClient")
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 ">
+            <div class="card mb-12">
+                <h4 class="card-title pt-3 pl-2">Ostatnie zamówienia</h4>
+                <div class="card-body">
+                    @Html.Action("_OrdersFromClient")
+                    
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+

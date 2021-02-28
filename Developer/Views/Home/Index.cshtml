@@ -1,0 +1,123 @@
+﻿@model Developer.Models.Messages.MessagesFromClient
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+    <!-- Top -->
+<div class="jumbotron jumbotron-fluid text-white text-center top">
+    <div class="container">
+        <h1 class="text-uppercase top-header">Odkryj <span class="text-warning">nową jakość</span> w budownictwie</h1>
+        <p class="top-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quam in nostrum?</p>
+        <a href="@Url.Action("OurWork")" class="btn btn-warning">Więcej</a>
+        
+    </div>
+</div>
+
+<!-- Wprowadzenie -->
+<section class="introduction">
+    <h2 class="text-center text-uppercase introduction-header">Buduj z nami</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <div class="introduction-item text-center">
+                    <img src="~/Content/Photo/ikona1.png" alt="ikona1">
+                    <h3 class="introduction-item-header">Innowacja</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus voluptatibus dicta laboriosam</p>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="introduction-item text-center">
+                    <img src="~/Content/Photo/ikona2.png" alt="ikona2">
+                    <h3 class="introduction-item-header">Tradycja</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus voluptatibus dicta laboriosam</p>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="introduction-item text-center">
+                    <img src="~/Content/Photo/ikona3.png" alt="ikona3">
+                    <h3 class="introduction-item-header">Doświadczenie</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus voluptatibus dicta laboriosam</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Opinie -->
+<section class="testimonial">
+    <div class="container">
+        <div class="text-center text-white testimonial-content mx-auto">
+            <h2 class="text-uppercase testimonial-header">Opinia <span class="text-warning">klienta</span></h2>
+            <blockquote class="blockquote">
+                <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati placeat ut assumenda accusamus sunt iste distinctio quod! Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <footer class="blockquote-footer text-white">Maciej Łącki <cite title="Inwestor">Inwestor</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<!-- Realizacje -->
+<section class="portfolio">
+    <div class="portfolio-header">
+        <h2 class="text-center text-uppercase">Nasze najnowsze realizacje</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                @Html.Action("_ProductSale")
+            </div>
+            <div class="col-md">
+                @Html.Action("_ProductVip")
+            </div>
+        </div>
+    </div>
+</section>
+<hr />
+<!--Dziennik-->
+<div class="portfolio">
+    <div class="table table-condensed">
+        <div class="col-md">
+            <h2 class="text-center text-uppercase pb-5">Najnowsze wpisy w dzienniku budowy</h2>
+            @Html.Action("_LogBuilding")
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Kontakt -->
+<section class="write-to-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="write-to-us-left">
+                    <h3 class="text-uppercase text-success page-label text-center">Masz pytanie?</h3>
+                    <h2 class="text-uppercase write-to-us-header pt-5 text-center">Skontaktuj się z nami</h2>
+                    <form action="">   
+                             <div >
+                                <div class="col-md-offset-2 col-md-10 pt-5 "style="margin-top:70px; margin-left:20px">
+                                    <a href="@Url.Action("Create","MessagesFromClients")" class="btn btn-warning btn-lg btn-block">Napisz wiadomość</a>
+                                </div>
+                            </div>
+                       
+                        @*@Html.Action("CreateMessage")*@
+                        @*<label for="name" class="form-control-label">Imię i nazwisko</label>
+                            <input type="text" id="name" class="form-control">
+                            <label for="email" class="form-control-label">E-mail</label>
+                            <input type="email" id="email" class="form-control">
+                            <label for="msg-title" class="form-control-label">Tytuł wiadomości</label>
+                            <input type="text" id="msg-title" class="form-control">
+                            <label for="message" class="form-control-label">Wiadomość</label>
+                            <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                            <button class="btn btn-warning">Wyślij wiadomość</button>*@
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-8 d-flex">
+                <img class="align-self-end img-fluid" src="~/Content/Photo/budowlaniec.jpg" alt="budowlaniec " >
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,103 @@
+﻿@model Developer.Models.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="col-xs-12" style="margin-bottom:10px">
+    <div id="sekcjaPowrotu">
+        <a class="btn btn-warning btn-sm"  href="@Url.Action("Index")">
+            <b>Powrót</b>
+        </a>
+    </div>
+</div>
+<div class="container">
+    <div class="card" style="background-color: #FAFAFA">
+        <div class="card-body">
+            <div style="min-height:450px; margin-bottom:50px">
+                <div class="row">
+                    <div class="col-xs-12  list-inline" style="padding:10px; margin-bottom:20px; font-size:12px">
+
+                        <div class="col-xs-12 ">
+                            <div class="ListaZdjec">
+                                <ul>
+                                    @foreach (var zdj in Model.Photos)
+                                    {
+                                        <li class="ZmienGlownyObrazek ZdjeciaObramowanie">
+                                            <a class="ZmienGlownyObrazek">
+                                                <img src="@zdj" style="height:80px" />
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            @using (Html.BeginForm("DodajPozycjeDoKoszyka", "Orders", FormMethod.Post))
+                            {
+                                @Html.Hidden("idTowar", Model.IdProduct);
+
+                                <img id="GlownyObrazek" style="height: 600px; width: 600px; float:left " src="@Model.Photos.First()" />
+                                <div class="container pl-5" id="OpisProduktu" style="float:left; width: 400px; height: 600px">
+                                    <div class="col-xs-12">
+                                        <p style="font-size: 22px; color:black; font-weight:600">Cena: @Model.Price zł</p>
+
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p style="font-size:14px">Ilość mieszkań: @Model.Quantity</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p style="font-size: 16px; font-weight:600">Nazwa mieszkania: @Model.Name</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p style="font-size:14px; font-weight:200">
+                                            @Model.Description
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12 ">
+                                        <fieldset>
+                                            <label style="font-size:16px; float:left; padding-top:5px">Ilość</label>
+                                            <input class="form-control" name="IloscTowaru" id="IloscTowaru" min="0" type="number" value="0" style="width: 100px; float: left; margin-left:10px" />
+                                        </fieldset>
+                                        <br />
+                                        <span id="KwotaRazemTowaru">
+
+                                        </span>
+                                        <button class="btn btn-warning" id="DodajDoKoszykaSubmit" type="submit" style=" margin:auto ; height: 50px; width: 200px; border:none; color:white; font-size: 18px ">Kupuje</button>
+                                        @Html.ValidationSummary()
+                                    </div>
+
+                                </div>
+                            }
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
+
+</div>
+
+<script>
+    $(".zmienGlownyObrazek").on("click touchend", function()
+    {
+        var adresObrazka = $(this).find("img").prop('src')
+        $("#glownyObrazek").prop('src' ,adresObrazka);
+    });
+     $("#iloscTowaru").on("focusout", function () {
+        obliczKwote();
+    });
+    function obliczKwote() {
+        var ile = parseFloat($("#iloscTowaru").val());
+        var cena = parseFloat('@Model.Price.ToString().Replace(",",".")');
+        var razem = ile * cena;
+        if ($.isNumeric(razem)) {
+            razem = razem.toFixed(2);
+            $("#kwotaRazemTowaru").html(razem);
+        }
+        else {
+            $("#kwotaRazemTowaru").html('0');
+        }
+    }
+</script>

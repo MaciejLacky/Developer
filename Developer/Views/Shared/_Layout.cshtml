@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>title>@ViewBag.Title - BudDeveloper</title>
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!--Logo-->
+    <div class="container">
+        <div class="Logo">
+            <img src="~/Content/Photo/BUdDEv.png" style="height: 60px" />
+        </div>
+    </div>
+
+    <!-- Navbar i Koszyk -->
+    <nav class="navbar navbar-light navbar-expand-lg">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <div class="navbar-nav">
+                    <a href="@Url.Action("Index","Home")" class="nav-item nav-link ">Start</a>
+                    <a href="@Url.Action("Index", "Shop")" class="nav-item nav-link">Dostępne mieszkania</a>
+                    <a href="@Url.Action("OurWork","Home")" class="nav-item nav-link">Realizacje</a>
+                    <a href="@Url.Action("Create","MessagesFromClients")" class="nav-item nav-link">Kontakt</a>
+                    <a href="@Url.Action("Login","Account",null)" class="nav-item nav-link">Logowanie</a>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {<a href="@Url.Action("Index", "Panel")" class="nav-item nav-link ">Panel administracyjny</a>}
+                </div>
+                <div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post,
+                       new { id = "logOffForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logOffForm').submit()">Wyloguj</a>
+                            @User.Identity.Name
+                        }
+                    }
+                </div>
+            </div>
+            <div style="float:right; margin-right: 5px">
+            <a style="color:gray; " href="@Url.Action("Index","Orders")">Zamówienia</a>
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                @Html.Action("_MiniKoszyk", "Orders")
+            }
+        </div>
+       
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <!-- Stopka -->
+        <footer class="text-white site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 footer-first-col">
+                        <ul class="list-unstyled">
+                            <li>
+                                <i class="fa fa-phone text-warning" aria-hidden="true"></i>888-223-111
+                            </li>
+                            <li>
+                                <i class="fa fa-phone text-warning" aria-hidden="true"></i>888-223-111
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>Pn.-Pt. 8:00-16:00
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>Pn.-Pt. 8:00-16:00
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope text-warning" aria-hidden="true"></i></i>buddev@buddeveloper.pl
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope text-warning" aria-hidden="true"></i></i>buddev@buddeveloper.pl
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 footer-second-col">
+                        <ul class="list-unstyled">
+                            <li><span class="text-warning">></span>Dlaczego my</li>
+                            <li><span class="text-warning">></span>Zobacz nasza najnowsze realizacje</li>
+                            <li><span class="text-warning">></span>Jak dbamy o bezpieczeństwo</li>
+                            <li><span class="text-warning">></span>Innowacja oraz technologie</li>
+                            <li><span class="text-warning">></span>Wybrane opinie inwestorów</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="~/Content/Photo/mapa.jpg" alt="Mapa" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Prawa autorskie -->
+        <section class="text-center text-white bg-warning copyright">
+            <div class="container">
+                <p>&copy; @DateTime.Now.Year - BudDeveloper</p>
+                <span class="mt-2 d-block copyright-designed">Designed by Lacky.net</span>
+
+            </div>
+        </section>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿@model List<Developer.Models.Messages.MessagesFromClient>
+
+<div class="container">
+    @foreach (var log in Model)
+    {
+        <dl>
+            <dt>@log.Name</dt>
+            <dd>@log.Phone</dd>
+            <dd>@log.Email</dd>
+            <dd>@log.TitleMessage</dd>
+
+            @*<dd>@log.ContentMessage</dd>*@
+        </dl>
+        <hr />
+    }
+   
+</div>

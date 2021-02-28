@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Developer.Models.CMS.LogBuilding>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="text-info pt-3 pb-3">
+    <h2>Wpisy w dzienniku budowy</h2>
+</div>
+
+<p>   
+   <a href="@Url.Action("Create")" class="btn btn-primary btn-lg mt-2 "> +Dodaj wpis</a>
+</p>
+<div class="container">
+    <div class="card mb-3" style="background-color: #FAFAFA">
+        <div class="card-body">
+            <table class="table table-borderless">
+                <thead class="thead-dark" style="background-color: #EEEEEE">
+                    <tr>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Content)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Position)
+                        </td>
+                        <td>
+                            <ul class="list-group list-group-flush" style="background-color: #FAFAFA">
+                                <li class="list-group-item" style="background-color: #FAFAFA"> <a href="@Url.Action("Edit", new { id = item.IdLog })" class="btn btn-primary  btn-sm" style="width:60px">Edytuj</a></li>
+                                @*<li class="list-group-item"> <a href="@Url.Action("Details", new { id = item.IdLog })" class="btn btn-primary btn-sm">Szczegóły</a></li>*@
+                                <li class="list-group-item" style="background-color: #FAFAFA"> <a href="@Url.Action("Delete", new { id = item.IdLog })" class="btn btn-danger  btn-sm" style="width:60px">Usuń</a></li>
+                            </ul>
+
+                        </td>
+                    </tr>
+
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+

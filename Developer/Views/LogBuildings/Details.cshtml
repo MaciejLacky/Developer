@@ -1,0 +1,37 @@
+﻿@model Developer.Models.CMS.LogBuilding
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="pt-2 pb-2">
+    @Html.ActionLink("Wstecz", "Index")
+</div>
+
+
+
+<div class="portfolio">
+    <div class="portfolio-header text-center font-weight-bold">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+    <dl class="dl-horizontal  ">
+
+
+
+        <dd class="pl-2">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt class="pl-2 text-center">
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd class="pl-2 text-center">
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+
+    </dl>
+    <div class="d-flex justify-content-center">
+        <a href="@Url.Action("Edit", new { id = Model.IdLog })" class="btn btn-primary btn-lg col-lg-2">Edytuj</a>
+    </div>
+</div>
+

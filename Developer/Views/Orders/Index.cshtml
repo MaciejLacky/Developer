@@ -1,0 +1,71 @@
+﻿@model List<Developer.Models.Shop.Orders>
+
+<div class="card" style="background-color: #FAFAFA">
+    <div class="card-body">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Nieruchomość</th>
+                        <th>Nazwa</th>
+                        <th>Ilość</th>
+                        <th>Cena</th>
+                        <th>Wartość</th>
+                        <th>Usuń</th>
+                    </tr>
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        foreach (var pozycja in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@pozycja.Product.ProductPhoto.First().Url" style="max-height: 80px; max-width: 80px" />
+                                </td>
+                                <td>
+                                    @pozycja.Product.Name
+                                </td>
+                                <td>
+                                    @pozycja.Quantity
+                                </td>
+                                <td>
+                                    @pozycja.Product.Price
+                                </td>
+                                <td>
+                                    @pozycja.Amount
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="@Url.Action("UsunPozycjeZKoszyka", "Orders", new { idTowar = pozycja.Product.IdProduct})">Usun</a>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>
+                                <span>Podsumowanie</span>
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@Model.Sum(x => x.Amount);</td>
+                            <td></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td align="center" colspan="6">Nie złożyłeś zamówień</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            @if (Model != null && Model.Count > 0)
+            {
+                <div>
+                    <a class="btn btn-warning btn-lg " href="@Url.Action("DaneZamowienia")">Zamawiam</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

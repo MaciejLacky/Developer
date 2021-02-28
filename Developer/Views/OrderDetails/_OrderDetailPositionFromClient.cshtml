@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Developer.Models.Shop.OrderDetailPosition>
+
+<table class="table table-borderless">
+    <thead class="thead-dark" style="background-color: #EEEEEE">
+        <tr>
+            <th scope="col">
+                <p>Nazwa</p>
+            </th>
+            <th scope="col">
+                <p>Cena</p>
+            </th>
+            <th scope="col">
+                <p>Ilość</p>
+            </th>
+            <th scope="col">
+                <p>Wartość</p>
+            </th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+        </tr>
+
+    }
+
+</table>
+

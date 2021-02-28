@@ -1,0 +1,66 @@
+﻿@model Developer.Models.Shop.OrderDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="pb-3 pt-3">
+    @Html.ActionLink("Wstecz", "Index")
+</div>
+
+<h3 class="text-info pt-3 pb-3">Czy napewno usunąć zamówienie?</h3>
+
+<div class="container">
+    <div class="card" style="background-color: #FAFAFA">
+        <div class="card-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.IdZamowienie)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IdZamowienie)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateOrder)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DateOrder)
+                </dd>
+
+            </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color d-flex justify-content-center pt-3">
+                    <input type="submit" value="Usuń" class="btn btn-danger col-lg-2 " />
+                </div>
+            }
+        </div>    
+       
+    </div>
+</div>

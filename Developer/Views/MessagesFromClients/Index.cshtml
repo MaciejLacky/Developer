@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Developer.Models.Messages.MessagesFromClient>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <div class="card mb-3" style="background-color: #FAFAFA">
+        <div class="card-body">          
+            <table class="table">
+                <thead class="thead-dark" style="background-color: #EEEEEE">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TitleMessage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContentMessage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TitleMessage)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContentMessage)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.IdMessage }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdMessage }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdMessage })*@
+                                <ul class="list-group list-group-flush" style="background-color: #FAFAFA">
+                                    <li class="list-group-item" style="background-color: #FAFAFA">
+                                        <a href="@Url.Action("Details", new { id = item.IdMessage })" class="btn btn-primary  btn-sm" style="width:60px">Zobacz</a>
+                                    </li>
+                                    <li class="list-group-item" style="background-color: #FAFAFA">
+                                        <a href="@Url.Action("Delete", new { id = item.IdMessage })" class="btn btn-danger  btn-sm" style="width:60px">Usuń</a>
+                                    </li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                    }
+
+            </table>
+        </div>
+    </div>            
+</div>
+

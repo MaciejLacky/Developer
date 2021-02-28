@@ -1,0 +1,64 @@
+﻿@model Developer.Models.CMS.LogBuilding
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="pb-3 pt-3">
+        @Html.ActionLink("Wstecz", "Index")
+    </div>
+    <div class="text-info pb-3 pt-3">
+        <h4>Utwórz nowy wpis do dziennika budowy</h4>
+    </div>
+    <div class="container">
+        <div class="card mb-3 " style="background-color: #FAFAFA">
+            <div class="card-body">
+                <div class="form-horizontal ">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+
+                        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label" })
+
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label " })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class=" d-flex justify-content-center">
+                            <input type="submit" value="Utwórz" class="btn btn-primary btn-lg col-lg-2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

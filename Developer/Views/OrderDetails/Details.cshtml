@@ -1,0 +1,99 @@
+﻿@model  Developer.Models.Shop.OrderDetail
+ 
+
+@{
+    ViewBag.Title = "Details";
+    var amount = ViewData["Amount"];
+}
+
+<div class="text-info pt-3 pb-3">
+    <h2>Szczegóły zamówienia</h2>
+</div>
+<div class="container">
+    <div class="card" style="background-color: #FAFAFA">
+        <div class="card-head">
+            <h4 class="pl-2 pt-2">Dane klienta</h4>
+        </div>
+        <div class="card-body mb-3 ">
+            <table class="table table-borderless">
+                <thead class="thead-dark" style="background-color: #EEEEEE">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdZamowienie)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Adres)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateOrder)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderDetailPosition.FirstOrDefault().Amount)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.IdZamowienie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Adres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DateOrder)
+                    </td>
+                    <td>                       
+                        @amount
+                    </td>
+
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <div class="card" style="background-color: #FAFAFA">
+        <div class="card-head">
+            <h4 class="pl-2 pt-2">Pozycje zamówienia</h4>
+        </div>
+        <div class="card-body mb-3 ">
+            <table class="table table-borderless">
+                
+                @Html.Action("_OrderDetailPositionFromClient",Model.IdZamowienie)
+            </table>
+
+        </div>
+       
+        <div>
+            <a href="@Url.Action("Index")" class="btn btn-primary btn-lg" style="margin-left:47%; margin-bottom:10px">Powrót</a>
+        </div>
+    </div>
+</div>

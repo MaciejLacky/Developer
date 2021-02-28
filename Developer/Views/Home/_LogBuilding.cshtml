@@ -1,0 +1,12 @@
+﻿@model List<Developer.Models.CMS.LogBuilding>
+
+<div class="container">     
+    @foreach (var log in Model)
+    {
+        <dl>
+            <dt>@log.Title</dt>
+            <dd>@log.Content</dd>
+        </dl>                
+    } 
+
+</div>

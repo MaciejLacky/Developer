@@ -1,0 +1,14 @@
+﻿@model List<Developer.Models.Shop.Product>
+
+            @foreach (var sale in Model)
+            {
+
+                    <img class="rounded img-fluid portfolio-img" style="height: 235px; width:540px" src="@sale.ProductPhoto.First().Url" alt="Inwestycja 1">
+                    <span class="text-uppercase page-label text-danger">@sale.Name</span>
+                    <h3 class="text-uppercase portfolio-subheader">Cena: @sale.Price zł</h3>
+                    <p>@sale.Description</p>
+                    <a class="btn btn-warning " style="justify-content:center; align-items:center " href="@Url.Action("Details" +"/"+ sale.IdProduct,"Shop" )">Szczegóły</a>
+
+            }
+
+

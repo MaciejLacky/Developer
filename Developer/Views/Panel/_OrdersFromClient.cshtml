@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Developer.Models.Shop.OrderDetail>
+
+<table class="table table-borderless">
+    <thead class="thead-dark" style="background-color: #EEEEEE">
+        <tr>
+            <th scope="col">
+                <p>Nr Zamówienia</p>
+            </th>
+            <th scope="col">
+                <p>Imię</p>
+            </th>
+            <th scope="col">
+                <p>Nazwisko</p>
+            </th>
+            <th scope="col">
+                <p>Data zamówienia</p>
+            </th>
+            <th scope="col">
+                <p>Telefon</p>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Take(10).OrderByDescending(x =>x.DateOrder))
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdZamowienie)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateOrder)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+
+
+</tr>
+
+    }
+
+</table>
+
